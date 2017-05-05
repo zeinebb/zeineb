@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block title %} Contact Us!{% endblock title %}
+
+{% block body %}
+
+    <h1>Contact details</h1>
+    
+    <h3>Fullname</h3>
+    <p><strong>{{contact.fullname }}</strong></p>
+    
+    <h3>Email</h3>
+    <p><strong>{{contact.email }}</strong></p>
+    
+    <h3>Snapchat</h3>
+    <p><strong>{{contact.snapchat|default('N/A') }}</strong></p>
+    
+    <h3>Instagram</h3>
+    <p><strong>{{contact.instagram|default('N/A') }}</strong></p>
+    
+    <h3>Phone</h3>
+    <p><strong>{{contact.phone|default('N/A') }}</strong></p>
+    
+    <h3>Subject</h3>
+    <p><strong>{{contact.subject }}</strong></p>
+    
+    <h3>Message</h3>
+    <p><strong>{{contact.message|nl2br }}</strong></p>
+    
+    <h3>ProcessesAt</h3>
+    {% if contact.isProcessed %}
+    <p>Processed at {{ contact.processesAt|date('Y-m-d H:i:s') }}</p>
+    {% else %}
+        <a class ="btn btn-primary" href="{{ path('contacts_mark_as_processed', {'id': contact.id, 'token':csrf_token('contacts_mark_as_processed'~ contact.id)} )}}"
+    {% endif %}
+
+{% endblock body%}

@@ -1,0 +1,7 @@
+users.title: "%count% User|%count% Users"
+hello.title: Hello!
+hello.name: Hello %name%!
+contact.title: Contact us!
+contact.form.fullname.label: Fullname
+contact.form.subject.placeholder: choose your subject
+contacts.fullname: Fullname

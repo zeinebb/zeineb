@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+{% block title %} Products!{% endblock title %}
+
+{% block body %}
+
+    <h1>Products</h1>
+    
+    <div>
+        
+    </div>
+    <table class="table">
+        <thead>
+              <tr>
+                <th>Reference</th>
+                <th>Product Label</th>
+                <th>Buy Price</th>
+                <th>Sales Price</th>
+                <th>Vat</th>
+        </thead>
+        <tbody>
+            {%for product in products %}
+                <tr>
+                    <td>{{product.reference}}</td>
+                    <td>{{product.productLabel}}</td> 
+                    <td>{{product.buyPrice}}</td>
+                    <td>{{product.salesPrice}}</td>
+                    <td>{{product.vat}}</td>
+                 <td><a href="{{ path('product_update', { 'id': product.id }) }}" class="btn btn-danger" role="button">Modify</a>
+
+           <form action="{{ path('product_delete') }}" method="POST">
+                                <input type="hidden" id="form_id" name="product_id" class="btn btn-danger" value="{{ product.id }}" />
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token('delete_product') }}" />
+
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+</td>
+
+                </tr>
+             {%endfor%}
+        </tbody>
+</table>
+        
+
+{% endblock%}
